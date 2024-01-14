@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .float-container {
+        border: 3px solid #fff;
+        padding: 20px;
+        display: flex;
+        }
+
+    .float-child {
+        width: 50%;
+        float: left;
+        grid-template-columns: 1px 1px;
+        padding: 20px;
+            /* border: 2px solid red; */
+    }  
+    .budget{
+            border: 2px solid green ;
+            width:60%;
+            padding: 10px;
+            font-weight: 900;
+            
+        }
+    .expense{
+            border: 2px solid red ;
+            width:60%;
+            height: 45%;
+            padding: 10px;
+            align-content: center;
+            font-weight:900;
+               
+        }
+        /* .balance{
+            border: 2px solid yellow;
+            width:50%;
+            display:flex;
+            float:right;
+            padding: 100px;
+            letter-spacing: 2px;
+            word-spacing: 10px;
+        } */
+        #result1,#result3{
+         color: green;
+         font-size: xx-large;
+        }
+        #result2{
+            color:red;
+         font-size: xx-large;
+        }
+        #list,#list1{
+            color: red;
+            font-size: xx-large;
+            list-style-type: 0024;
+        }
+        .balance{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+        .titless{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            padding-top: 70px;
+
+        }
+        
+    </style>
+</head>
+<body>
+<section class="float-container">
+  <section class="float-child">
+    <div class="budget">
+        <br>
+        <!-- enter budget amount -->
+        <label>Please Enter Your Budget</label><br>
+        <input style="border: 2px solid green; width: 20rem;" type="number" id="I1"><br><br>
+        <button style="border: 2px solid green; color: green;" onclick="getAdd()">Calculate</button><br>
+        <br>
+    </div><br><br><br>
+     <div class="expense">
+        <br>
+        <!-- enter the expense name -->
+        <label>Please Enter Your Expense</label><br>
+        <input  style="border: 2px solid red; width: 20rem;"  type="text" id="expname"><br><br>
+        <!-- enter the expense amount -->
+        <label>Please Enter Your Expense Amount</label><br>
+        <input style="border: 2px solid red; width: 20rem;" type="number" id="I2"><br><br>
+        <button style="border: 2px solid red; color: red;" onclick="addexpense()">Add Expense</button><br><br>
+        
+     </div>
+ </section>
+    <section class="float-child">
+     <div class="balance">
+        <div>
+          <!-- display the budget amount -->
+        <label><h3>BUDGET:</h3><p id="result1"></p></label>
+        </div>
+        <div>
+         <!-- display the expense amount -->
+         <label><h3>EXPENSES:</h3><p id="result2"></p></label>
+        </div>
+        <div>
+         <!-- display the balance amount -->
+         <label><h3>BALANCE:</h3><p id="result3"></p></label>
+        </div>
+        
+      </div>
+      <div class="titless">
+        <div class="expensetitle">
+            <label><h3>Expense Name:</h3></label>
+            <div class="container">
+                <ul id="list" type="text">
+
+                </ul>
+            </div>
+        </div>
+        <div>
+            <label><h3>Expense Amount:</h3></label>
+            <div class="container">
+               <ul id="list1" >
+
+              </ul>
+            </div>
+        </div>
+      </div>
+    </section>
+  
+</section>  
+<script>
+
+    // budget variable
+    var num1=document.getElementById("I1");
+    //expense variable
+    var num2=document.getElementById("I2");
+    //expense name variable
+    var expname= document.getElementById("expname");
+    //expense amount variable
+    var expamount= document.getElementById("I2");
+
+    function getAdd()
+    {   
+        document.getElementById("result1").innerHTML = num1.value;
+        var bal=num1.value;
+        document.getElementById("result3").innerHTML =bal;
+   
+    }  
+    function addexpense()
+    {
+        document.getElementById("result2").innerHTML = num2.value;  
+        var bal=num1.value-num2.value;
+        num1.value=bal;
+        document.getElementById("result3").innerHTML =bal;
+        // document.getElementById("h3").innerHTML=expname.value;
+        // document.getElementById("h4").innerHTML=expamount.value;
+        var a=document.getElementById("list")
+        var b=document.createElement("li")
+        var c=document.getElementById("expname").value
+        b.innerText=c;
+        a.appendChild(b)
+
+        var x=document.getElementById("list1")
+        var y=document.createElement("li")
+        var z=document.getElementById("I2").value
+        y.innerText=z;
+        x.appendChild(y)
+
+    }
+    
+
+</script>
+
+</body>
+</html>
